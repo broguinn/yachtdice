@@ -3,7 +3,7 @@ $(function() {
   var computer = Object.create(Player);
   var dice = Object.create(hand);
 
-  $("button#roll").click(function() {    
+  $("button#roll").click(function() {
     dice.roll();
     $("#player-roll").empty().append(dice.translateddice);
     dice.score();
@@ -22,14 +22,13 @@ $(function() {
 
     player.nextRound();
 
-    
     if (player.round === 13) {
       $("#results").empty().append("The final scores were " + player.total + " and " + computer.total);
       // $("#game-over").fadeIn();
       $("#header").empty().append("Game Over!");
       $("button#roll").empty().append("Reset?");
     }
-    
+
     if (player.round === 14) {
       $("#current-roll").empty().append(0);
       $("#dice-type").empty().append("nothing, yet");
@@ -57,7 +56,6 @@ var diceFaces = {
   6 : "&#9861;"
 };
 
-
 var Player = {
   total: 0,
   round: 1,
@@ -80,7 +78,7 @@ var hand = {
     var dice = [];
     for(var i = 0; i < 5; i++) {
       dice.push(Math.floor(Math.random() * 5 + 1));
-    } 
+    }
     this.dice = dice;
     var translateddice = this.dice.map(function(number) {
       return diceFaces[number];
@@ -93,14 +91,7 @@ var hand = {
     var stringdice = sorted.join('');
     var diceType = "none";
     var smallStraight = false;
-    // for (i = 0; i < sorted.length - 2; i++) {
-    //   if ((this.dice[i] !== this.dice[i+1] - 1) || (this.dice[i + 1] !== this.dice[i + 2] - 1) {
-    //     smallStraight = false;
-    //   }
-    //   if (this.dice[i + 1] !== this.dice[i + 2] - 1) {
 
-    //   }
-    // }
     if ($.inArray(3, unsorted) !== -1 && $.inArray(4, unsorted) !== -1) {
       if ($.inArray(1, unsorted) !== -1 && $.inArray(2, unsorted) !== -1) {
         smallStraight = true;
